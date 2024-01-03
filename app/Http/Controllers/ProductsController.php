@@ -7,6 +7,7 @@ use App\Models\Photos;
 use App\Models\Products;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
 {
@@ -60,7 +61,8 @@ class ProductsController extends Controller
 
     public function read()
     {
-        $items = Products::all();
+//        $items = Products::all();
+        $items = Products::with('photo')->get();
 
         return view('pages.read',compact('items'));
     }
@@ -93,6 +95,7 @@ class ProductsController extends Controller
 
         return response()->json($items);
     }
+
 
 
 }
