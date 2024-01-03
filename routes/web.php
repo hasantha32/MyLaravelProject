@@ -28,3 +28,4 @@ Route::view('crud', 'pages.crud');
 Route::view('products', 'pages.products');
 Route::post('adding', [ProductsController::class,'adding']);
 //Route::post('save-products', [ProductsController::class,'save']);
+Route::get('read',[ProductsController::class,'read']);

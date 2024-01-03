@@ -58,6 +58,13 @@ class ProductsController extends Controller
 //        return response()->json('Added Successfully');
     }
 
+    public function read()
+    {
+        $items = Products::all();
+
+        return view('pages.read',compact('items'));
+    }
+
     public function edit(Request $request)
     {
         $items = Products::findorfail($request->id);
@@ -86,7 +93,6 @@ class ProductsController extends Controller
 
         return response()->json($items);
     }
-
 
 
 }
