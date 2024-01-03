@@ -26,26 +26,33 @@ class ProductsController extends Controller
 //            return response()->json(['errors' => $validator->errors()], 422);
 //        }
 
+        try {
+            DB::beginTransaction();
+            $items = new Products();
+            $items->name=$request->name;
+            $items->value=$request->value;
+            $items->price=$request->price;
+            $items->quantity=$request->quantity;
+            $items->type=$request->type;
 
-        $items = new Products();
-        $items->name=$request->name;
-        $items->value=$request->value;
-        $items->price=$request->price;
-        $items->quantity=$request->quantity;
-        $items->type=$request->type;
-
-        $items->save();
+            $items->save();
 
 
 //added image
-        $imageName =  $request->image->getClientOriginalName();
-        $request->image->move(public_path('image'),$imageName);
+            $imageName =  $request->image->getClientOriginalName();
+            $request->image->move(public_path('image'),$imageName);
 
-        $photos = new Photos();
-        $photos->path = 'images/' . $imageName;
-        $photos->product_id = $items->id;
-        $photos->save();
-        return back();
+            $photos = new Photos();
+            $photos->path = 'images/' . $imageName;
+            $photos->product_id = $items->id;
+            $photos->save();
+            DB::commit();
+            return back();
+        }catch (\Exception $e){
+            DB::rollBack();
+            return back()->with($e);
+        }
+
 //
 
 //        return response()->json('Added Successfully');
@@ -79,4 +86,7 @@ class ProductsController extends Controller
 
         return response()->json($items);
     }
+
+
+
 }

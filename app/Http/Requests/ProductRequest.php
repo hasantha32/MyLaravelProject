@@ -29,6 +29,7 @@ class ProductRequest extends FormRequest
 //            'name' => ['unique:products,name']
 
                         'name' => ['required'],
+                        'image' => ['required'],
                         'price' => ['required', 'numeric', 'between:0,100'],
                         'quantity' =>['required','numeric', 'between:0,100']
 
@@ -41,7 +42,7 @@ class ProductRequest extends FormRequest
     public function messages()
     {
         return [
-           'name' => ('Added UnSuccessfully'),
+           'name'.required => 'Please enter the name',
         ];
     }
 
