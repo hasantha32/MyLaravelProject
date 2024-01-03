@@ -42,7 +42,7 @@ class ProductRequest extends FormRequest
     public function messages()
     {
         return [
-           'name'.required => 'Please enter the name',
+//           'name'.required => 'Please enter the name',
         ];
     }
 

@@ -9,7 +9,9 @@
                 <th>Value</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Photo</th>
                 <th>Type</th>
+
             </thead>
             <tbody>
                 @foreach($items as $item)
@@ -18,6 +20,10 @@
                         <td>{{$item->value}}</td>
                         <td>{{$item->price}}</td>
                         <td>{{$item->quantity}}</td>
+                        <td>
+                            <image src="{{URL::asset($item->photo->path)}}" style="width: 100%" />
+
+                        </td>
                         <td>{{$item->type}}</td>
                     </tr>
                 @endforeach
