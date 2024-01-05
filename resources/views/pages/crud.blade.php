@@ -1,5 +1,5 @@
-{{--@extends('layouts.master')--}}
-{{--@section('content')--}}
+@extends('layouts.master')
+@section('content')
 <div class= "card">
     @if($errors->any())
         <div class="alert alert-danger">
@@ -47,4 +47,4 @@
     </div>
 </div>
 
-{{--@endsection--}}
+@endsection

@@ -16,16 +16,6 @@ class ProductsController extends Controller
 
     public function adding(ProductRequest $request)
     {
-//        $validateData = $request->validated();
-//
-//        $validator = Validator::make($request->all(), [
-//            'name' => 'required',
-//
-//        ]);
-//
-//        if ($validator->fails()) {
-//            return response()->json(['errors' => $validator->errors()], 422);
-//        }
 
         try {
             DB::beginTransaction();
